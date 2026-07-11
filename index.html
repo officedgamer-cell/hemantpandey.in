@@ -1,251 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hemant Pande | Naruto Theme</title>
-    <style>
-:root {
-    --bg: #0f172a;
-    --panel: #111827;
-    --text: #f8fafc;
-    --muted: #94a3b8;
-    --accent: #f97316;
-    --accent-soft: rgba(249, 115, 22, 0.18);
-    --shadow: rgba(255, 255, 255, 0.08);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemant Pandey | Digital Portfolio</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --surface: rgba(18, 29, 54, 0.85);
+      --surface-strong: rgba(15, 23, 42, 0.95);
+      --text: #f8fbff;
+      --muted: #9aa7c1;
+      --accent: #ff6b35;
+      --accent-strong: #ff9840;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
 
-* {
-    box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Inter, system-ui, sans-serif;
-    background: radial-gradient(circle at top left, #ff7a18 0%, transparent 25%),
-                radial-gradient(circle at bottom right, #2563eb 0%, transparent 22%),
-                linear-gradient(135deg, #020617 0%, #111827 100%);
-    color: var(--text);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.page-shell {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 40px 24px 56px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(255,107,53,0.18), transparent 20%),
+                  radial-gradient(circle at bottom right, rgba(56,130,255,0.15), transparent 22%),
+                  linear-gradient(180deg, #060a1a 0%, #071021 45%, #090f1f 100%);
+    }
 
-.hero {
-    padding: 48px 32px;
-    border-radius: 32px;
-    background: rgba(15, 23, 42, 0.92);
-    box-shadow: 0 28px 80px rgba(15, 23, 42, 0.45);
-    position: relative;
-    overflow: hidden;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.18), transparent 36%),
-                radial-gradient(circle at 80% 30%, rgba(37, 99, 235, 0.18), transparent 28%);
-    pointer-events: none;
-}
+    .layout {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 24px 48px;
+    }
 
-.hero-brand {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
 
-.logo-ring {
-    width: 84px;
-    height: 84px;
-    border: 3px solid rgba(249, 115, 22, 0.9);
-    border-radius: 50%;
-    box-shadow: 0 0 0 12px rgba(249, 115, 22, 0.12);
-}
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
 
-.eyebrow {
-    margin: 0 0 12px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.28em;
-    font-size: 0.8rem;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+    }
 
-h1 {
-    margin: 0;
-    font-size: clamp(3rem, 4vw, 4.6rem);
-    line-height: 0.98;
-}
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-.tagline {
-    max-width: 640px;
-    color: var(--muted);
-    font-size: 1.05rem;
-    line-height: 1.8;
-}
-
-main {
-    margin-top: 40px;
-    display: grid;
-    gap: 28px;
-}
-
-.about-card,
-.power-card {
-    padding: 32px;
-    border-radius: 28px;
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
-}
-
-.about-card h2,
-.power-card h2 {
-    margin-top: 0;
-    color: #facc15;
-}
-
-.about-card p {
-    margin: 16px 0 0;
-    color: var(--muted);
-    line-height: 1.85;
-}
-
-.feature-grid {
-    margin-top: 24px;
-    display: grid;
-    gap: 16px;
-}
-
-.feature-grid article {
-    padding: 24px;
-    border-radius: 20px;
-    background: rgba(30, 41, 59, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.feature-grid h3 {
-    margin: 0 0 16px;
-    color: #f97316;
-}
-
-.feature-grid p {
-    margin: 0;
-    color: var(--muted);
-}
-
-.power-section {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: 1.7fr 1fr;
-}
-
-.power-art {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 32px;
-    border-radius: 28px;
-    background: linear-gradient(180deg, rgba(249, 115, 22, 0.1), rgba(37, 99, 235, 0.12));
-    border: 1px solid rgba(249, 115, 22, 0.2);
-}
-
-.chakra-ball {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #f97316, #c2410c 55%, transparent 70%);
-    box-shadow: 0 0 0 10px rgba(249, 115, 22, 0.1), 0 30px 60px rgba(249, 115, 22, 0.14);
-    margin-bottom: 24px;
-}
-
-.chakra-text {
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-footer {
-    margin-top: 24px;
-    text-align: center;
-    color: var(--muted);
-}
-
-footer p {
-    margin: 0;
-}
-
-@media (max-width: 860px) {
     .hero {
-        padding: 32px 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 36px;
+      padding: 64px 0 24px;
     }
-    .power-section {
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      font-size: 0.78rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+      opacity: 0.8;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3rem, 4.5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      margin: 24px 0 0;
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+    }
+
+    .button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #07101f;
+      border: 1px solid transparent;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-panel {
+      padding: 32px;
+      border-radius: 32px;
+      background: rgba(12, 19, 38, 0.96);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,107,53,0.18), transparent 22%),
+                  radial-gradient(circle at 80% 70%, rgba(59,130,246,0.16), transparent 20%);
+      pointer-events: none;
+    }
+
+    .hero-panel-content {
+      position: relative;
+      display: grid;
+      gap: 22px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .stat-card {
+      display: grid;
+      gap: 14px;
+      padding: 26px;
+      border-radius: 28px;
+      background: rgba(6, 10, 23, 0.88);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+
+    .stat-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .highlight-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .highlight {
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: 1.95rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .section {
+      margin-top: 72px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 660px;
+      line-height: 1.8;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(9, 17, 35, 0.9);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+
+    .card p,
+    .card li {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.96rem;
+    }
+
+    .skill-list,
+    .project-list {
+      display: grid;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill-item,
+    .project-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .skill-badge,
+    .project-badge {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(255,107,53,0.12);
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .project-content h4,
+    .skill-content h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .project-content p,
+    .skill-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 20px;
+      padding: 36px;
+      border-radius: 32px;
+      background: rgba(8, 14, 32, 0.9);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card a {
+      color: var(--text);
+    }
+
+    .footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
         grid-template-columns: 1fr;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
     }
-}
-    </style>
+
+    @media (max-width: 680px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero {
+        padding-top: 40px;
+      }
+      .hero-panel {
+        min-height: auto;
+      }
+      .button,
+      .button-secondary {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="page-shell">
-        <header class="hero">
-            <div class="hero-brand">
-                <span class="logo-ring"></span>
-                <div>
-                    <p class="eyebrow">Naruto Theme</p>
-                    <h1>Hemant Pande</h1>
-                    <p class="tagline">A shinobi-style website with chakra energy and bold ninja spirit.</p>
-                </div>
+  <div class="layout">
+    <header class="topbar">
+      <div class="brand">Hemant Pandey</div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Digital Architect</span>
+        <h1>High-end portfolio websites, built modern and performance-first.</h1>
+        <p>I design and develop premium brands, landing pages, and web apps with clean UI, strong interactions, and fast delivery. Perfect for freelancers, startups, and personal brands.</p>
+        <div class="hero-actions">
+          <a class="button" href="#contact">Work with me</a>
+          <a class="button-secondary" href="#projects">See projects</a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="panel-glow"></div>
+        <div class="hero-panel-content">
+          <div class="stat-card">
+            <h3>Portfolio snapshot</h3>
+            <p>Designed to feel premium, professional, and ready for a modern web presence.</p>
+          </div>
+          <div class="highlight-grid">
+            <div class="highlight">
+              <strong>100+</strong>
+              <p>Page designs and landing experiences delivered.</p>
             </div>
-        </header>
+            <div class="highlight">
+              <strong>24h</strong>
+              <p>Fast prototype-ready website to start presenting your brand immediately.</p>
+            </div>
+            <div class="highlight">
+              <strong>Custom</strong>
+              <p>Tailored visual identity, content flow, and portfolio storytelling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <main>
-            <section class="about-card">
-                <h2>About Hemant</h2>
-                <p>Welcome to the official Naruto-inspired page for Hemant Pande. This site combines vivid chakra colors, dynamic layout, and a strong sense of ambition—just like a true ninja.</p>
-                <div class="feature-grid">
-                    <article>
-                        <h3>Shinobi Spirit</h3>
-                        <p>Driven by dedication, creativity, and courage.</p>
-                    </article>
-                    <article>
-                        <h3>Bold Design</h3>
-                        <p>Orange accents, sharp shapes, and modern minimalism.</p>
-                    </article>
-                    <article>
-                        <h3>Always Learning</h3>
-                        <p>A journey that never stops, just like chakra training.</p>
-                    </article>
-                </div>
-            </section>
+    <section id="about" class="section">
+      <div class="section-header">
+        <div>
+          <h2>About me</h2>
+          <p>I'm Hemant Pandey — I help brands launch modern websites with polished design, excellent usability, and a premium digital feel.</p>
+        </div>
+      </div>
 
-            <section class="power-section">
-                <div class="power-card">
-                    <h2>Chakra Highlights</h2>
-                    <ul>
-                        <li>Speed & agility in design</li>
-                        <li>Powerful visual storytelling</li>
-                        <li>Energy through color and contrast</li>
-                    </ul>
-                </div>
-                <div class="power-art">
-                    <div class="chakra-ball"></div>
-                    <div class="chakra-text">Believe it!</div>
-                </div>
-            </section>
-        </main>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Experience</h3>
+          <p>4+ years of building websites, landing pages, and full-stack apps with HTML, CSS, JavaScript, React, and Node.</p>
+        </div>
+        <div class="card">
+          <h3>Design</h3>
+          <p>Focused on clean visual systems, strong typography, and layouts that feel high-end without being heavy.</p>
+        </div>
+        <div class="card">
+          <h3>Outcome</h3>
+          <p>Site experiences that look premium, load fast, and turn visitors into clients.</p>
+        </div>
+      </div>
+    </section>
 
-        <footer>
-            <p>Designed with Naruto energy for Hemant Pande.</p>
-        </footer>
-    </div>
+    <section id="projects" class="section">
+      <div class="section-header">
+        <div>
+          <h2>Featured work</h2>
+          <p>Selected website projects and digital experiences created for portfolios, startups, and brands.</p>
+        </div>
+      </div>
+
+      <div class="project-list">
+        <div class="project-item">
+          <span class="project-badge">01</span>
+          <div class="project-content">
+            <h4>Brand Studio Website</h4>
+            <p>Modern portfolio site for a creative studio with immersive hero visuals, case study sections, and contact CTA.</p>
+          </div>
+        </div>
+        <div class="project-item">
+          <span class="project-badge">02</span>
+          <div class="project-content">
+            <h4>Professional Portfolio</h4>
+            <p>A premium personal website with strong storytelling, skill highlights, testimonials, and service offers.</p>
+          </div>
+        </div>
+        <div class="project-item">
+          <span class="project-badge">03</span>
+          <div class="project-content">
+            <h4>Startup Landing</h4>
+            <p>High-converting landing page template built for SaaS and app launches with fast load and clear messaging.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="section-header">
+        <div>
+          <h2>Core skills</h2>
+          <p>Technical and design capabilities used to build beautiful websites that work.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Web Development</h3>
+          <ul>
+            <li>HTML5 / CSS3 / JavaScript</li>
+            <li>Responsive & mobile-first layouts</li>
+            <li>React / Next.js / Vite</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Design</h3>
+          <ul>
+            <li>Visual identity & branding</li>
+            <li>UX-focused page structure</li>
+            <li>Clean, premium visual systems</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Launch</h3>
+          <ul>
+            <li>GitHub Pages / Netlify / Vercel</li>
+            <li>Performance optimization</li>
+            <li>SEO-friendly setup</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-header">
+        <div>
+          <h2>Get in touch</h2>
+          <p>Ready for a modern website like hemantpandey.in? Send a quick message and let’s build it together.</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <p><strong>Email:</strong> <a href="mailto:hemant.pandey2121@gmail.com">hemant.pandey2121@gmail.com</a></p>
+        <p><strong>Phone:</strong> +91 12345 67890</p>
+        <p><strong>Location:</strong> India</p>
+        <p>Tell me your style, content, and launch timeframe. I’ll help you get a polished website live fast.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 Hemant Pandey. All rights reserved.</span>
+      <span>Built for a high-end digital portfolio.</span>
+    </footer>
+  </div>
 </body>
 </html>
