@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saurabh Tiwari | Premium Creative Website</title>
-    <meta name="description" content="A high-level animated portfolio website with photos, videos, motion effects, and interactive sections for Saurabh Tiwari." />
+    <title>Saurabh Tiwari | Personal Portfolio</title>
+    <meta name="description" content="A richer personal portfolio website for Saurabh Tiwari with animation, programming skills, projects, photos, videos, and modern design." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,6 +12,7 @@
   </head>
   <body>
     <canvas id="heroCanvas"></canvas>
+    <div class="scroll-progress"></div>
     <div class="background-orb orb-one"></div>
     <div class="background-orb orb-two"></div>
 
@@ -19,39 +20,43 @@
       <a href="#home" class="brand">Saurabh Tiwari</a>
       <nav class="nav-links">
         <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#videos">Videos</a>
-        <a href="#journey">Journey</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#media">Media</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button id="themeToggle" class="theme-toggle" type="button">☀️</button>
     </header>
 
     <section id="home" class="hero">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Premium Creative Portfolio</p>
-        <h1>A high-level digital experience with motion, media, and impact.</h1>
-        <p class="hero-text">
-          This website combines cinematic visuals, animated storytelling, immersive media, and polished presentation into one elegant experience for Saurabh Tiwari.
-        </p>
-
+        <p class="eyebrow">Personal Portfolio</p>
+        <h1>Hi, I’m <span>Saurabh Tiwari</span>.</h1>
+        <p class="hero-text" id="typingText"></p>
+        <div class="chip-row">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Python</span>
+          <span class="chip">React</span>
+        </div>
         <div class="info-card">
           <p><strong>Email:</strong> saurabhtiwari8834@gmail.com</p>
           <p><strong>Mobile:</strong> +91 7225923213</p>
           <p><strong>Created by:</strong> Hemant Pandey</p>
         </div>
-
         <div class="hero-buttons">
-          <a class="btn primary" href="#gallery">Explore Gallery</a>
-          <a class="btn secondary" href="#videos">Watch Media</a>
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#media">See Media</a>
         </div>
       </div>
 
       <div class="hero-visual reveal">
         <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="Creative banner" />
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="Creative personal banner" />
           <div class="hero-float">
-            <h3>Motion First</h3>
-            <p>Bold color, animated rhythm, and immersive design.</p>
+            <h3>Design + Code</h3>
+            <p>Building elegant digital experiences with modern tools.</p>
           </div>
         </div>
       </div>
@@ -59,84 +64,138 @@
 
     <section class="stats-section">
       <div class="stat-box reveal">
-        <strong>120+</strong>
-        <span>Creative Concepts</span>
+        <strong data-count="15">0</strong>
+        <span>Projects Built</span>
       </div>
       <div class="stat-box reveal">
-        <strong>24/7</strong>
-        <span>Visual Flow</span>
+        <strong data-count="8">0</strong>
+        <span>Languages Learned</span>
       </div>
       <div class="stat-box reveal">
-        <strong>100%</strong>
-        <span>Premium Presentation</span>
+        <strong data-count="100">0</strong>
+        <span>Percent Creative Focus</span>
       </div>
       <div class="stat-box reveal">
-        <strong>4K</strong>
-        <span>High-Impact Media</span>
+        <strong data-count="24">0</strong>
+        <span>Hours of Practice Weekly</span>
       </div>
     </section>
 
     <main>
       <section id="about" class="section reveal">
         <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2>A modern digital identity built for elegance and energy.</h2>
+          <p class="eyebrow">About Me</p>
+          <h2>I combine creativity, logic, and storytelling in everything I build.</h2>
         </div>
-
         <div class="about-grid">
-          <div class="about-card">
-            <h3>Creative Vision</h3>
-            <p>Every section in this experience is crafted to feel alive through expressive motion, cinematic imagery, and carefully balanced layout.</p>
-          </div>
-          <div class="about-card">
-            <h3>Media Rich</h3>
-            <p>Photos, videos, layered visuals, and animated effects come together to create a premium showcase that feels dynamic from top to bottom.</p>
-          </div>
-          <div class="about-card">
-            <h3>Interactive Feel</h3>
-            <p>Hover responses, scroll reveals, motion accents, and a responsive layout ensure the website feels polished on every screen.</p>
-          </div>
+          <article class="about-card">
+            <h3>Who I Am</h3>
+            <p>I am a curious builder who enjoys designing visually rich websites, exploring programming concepts, and turning creative ideas into interactive experiences.</p>
+          </article>
+          <article class="about-card">
+            <h3>What I Love</h3>
+            <p>I enjoy web design, animation, coding, photography, and creating polished digital experiences that feel smooth, personal, and memorable.</p>
+          </article>
+          <article class="about-card">
+            <h3>My Goal</h3>
+            <p>My mission is to create modern personal websites and digital products that are attractive, functional, and full of thoughtful details.</p>
+          </article>
         </div>
       </section>
 
-      <section id="gallery" class="section reveal">
+      <section id="skills" class="section reveal">
         <div class="section-heading">
-          <p class="eyebrow">Photo Gallery</p>
-          <h2>Stunning imagery with cinematic atmosphere.</h2>
+          <p class="eyebrow">Skills</p>
+          <h2>Programming languages, web tools, and creative technologies I use.</h2>
+        </div>
+        <div class="skill-grid">
+          <div class="skill-card">
+            <h3>Frontend</h3>
+            <ul>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Bootstrap</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Backend</h3>
+            <ul>
+              <li>Python</li>
+              <li>Node.js</li>
+              <li>SQL</li>
+              <li>APIs</li>
+              <li>Git/GitHub</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Creative Tools</h3>
+            <ul>
+              <li>Photoshop</li>
+              <li>Canva</li>
+              <li>Figma</li>
+              <li>Video Editing</li>
+              <li>Motion Design</li>
+            </ul>
+          </div>
+        </div>
+        <div id="languageTags" class="language-tags"></div>
+      </section>
+
+      <section id="projects" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
+          <h2>Selected work that reflects my style and skills.</h2>
+        </div>
+        <div id="projectGrid" class="project-grid"></div>
+      </section>
+
+      <section id="journey" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Journey</p>
+          <h2>My path from learning to creating polished experiences.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3>01. Learning the Basics</h3>
+            <p>I started with HTML, CSS, and JavaScript and developed a strong foundation for web development.</p>
+          </article>
+          <article class="timeline-item">
+            <h3>02. Building Creative Pages</h3>
+            <p>I explored animation, UI design, and modern layouts to make websites feel alive and professional.</p>
+          </article>
+          <article class="timeline-item">
+            <h3>03. Expanding with Logic</h3>
+            <p>I began using Python, APIs, and dynamic JavaScript to create interactive and practical web experiences.</p>
+          </article>
+          <article class="timeline-item">
+            <h3>04. Creating Personal Brands</h3>
+            <p>Now I focus on building personal websites that combine design, content, and performance to tell a story.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="media" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Media</p>
+          <h2>Photos, videos, and visuals that bring the portfolio to life.</h2>
         </div>
         <div class="gallery-grid">
           <article class="media-card">
             <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Golden sunset" />
-            <div class="card-content"><h3>Golden Horizon</h3><p>Dreamy light and rich storytelling.</p></div>
+            <div class="card-content"><h3>Golden Horizon</h3><p>Warm and cinematic lighting.</p></div>
           </article>
           <article class="media-card">
             <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=900&q=80" alt="City lights" />
-            <div class="card-content"><h3>Urban Glow</h3><p>Modern energy in a vibrant frame.</p></div>
+            <div class="card-content"><h3>Urban Glow</h3><p>Modern city energy.</p></div>
           </article>
           <article class="media-card">
             <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80" alt="Mountain view" />
-            <div class="card-content"><h3>Nature Rhythm</h3><p>Balanced, organic, and refreshing.</p></div>
-          </article>
-          <article class="media-card">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="Landscape" />
-            <div class="card-content"><h3>Skyline Dream</h3><p>Minimal beauty with depth and motion.</p></div>
-          </article>
-          <article class="media-card">
-            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Ocean coast" />
-            <div class="card-content"><h3>Coastal Motion</h3><p>Ocean energy and calm visual balance.</p></div>
-          </article>
-          <article class="media-card">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" alt="Snowy mountain" />
-            <div class="card-content"><h3>Winter Glow</h3><p>Cold tones with a warm, polished mood.</p></div>
+            <div class="card-content"><h3>Nature Rhythm</h3><p>Balanced and refreshing composition.</p></div>
           </article>
         </div>
-      </section>
 
-      <section id="videos" class="section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Featured Videos</p>
-          <h2>Motion and cinematic storytelling at the core.</h2>
-        </div>
         <div class="video-grid">
           <div class="video-card large">
             <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80">
@@ -158,60 +217,25 @@
         </div>
       </section>
 
-      <section id="journey" class="section reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Journey</p>
-          <h2>Built around creative progression and polished presentation.</h2>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h3>01. Ideas</h3>
-            <p>Concepts are shaped with strong emotion, structure, and depth.</p>
-          </div>
-          <div class="timeline-item">
-            <h3>02. Design</h3>
-            <p>Visual language becomes bold, elegant, and memorable.</p>
-          </div>
-          <div class="timeline-item">
-            <h3>03. Motion</h3>
-            <p>Animation and interaction create a lively and immersive experience.</p>
-          </div>
-          <div class="timeline-item">
-            <h3>04. Launch</h3>
-            <p>Everything comes together into a premium digital presence.</p>
-          </div>
-        </div>
-      </section>
-
       <section class="section reveal">
         <div class="section-heading">
-          <p class="eyebrow">Highlights</p>
-          <h2>Animated cards and interactive visual layers.</h2>
+          <p class="eyebrow">Code Showcase</p>
+          <h2>A small example of the type of logic and structure I enjoy building.</h2>
         </div>
-        <div class="feature-grid">
-          <div class="feature-card pulse-card">
-            <h3>Pulse Motion</h3>
-            <p>Bright animated accents add energy and focus.</p>
-          </div>
-          <div class="feature-card orbit-card">
-            <h3>Orbit Flow</h3>
-            <p>Smooth rotation and motion create futuristic rhythm.</p>
-          </div>
-          <div class="feature-card glow-card">
-            <h3>Glow Burst</h3>
-            <p>Layered lighting produces depth and prestige.</p>
-          </div>
-          <div class="feature-card tilt-card">
-            <h3>Hover Lift</h3>
-            <p>Cards lightly respond to interaction with elegance.</p>
-          </div>
-        </div>
+        <pre class="code-block"><code>const portfolio = {
+  name: 'Saurabh Tiwari',
+  skills: ['HTML', 'CSS', 'JavaScript', 'Python'],
+  goal: 'Create beautiful, interactive experiences',
+  focus: ['Design', 'Animation', 'Performance']
+};
+
+console.log(portfolio.name);</code></pre>
       </section>
 
       <section id="contact" class="section contact-section reveal">
         <div class="section-heading">
           <p class="eyebrow">Contact</p>
-          <h2>Let’s make something unforgettable together.</h2>
+          <h2>Let’s create something memorable together.</h2>
         </div>
         <div class="contact-card">
           <div>
