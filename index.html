@@ -1,544 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hemant Pandey | Digital Portfolio</title>
-  <style>
-    :root {
-      --bg: #050816;
-      --surface: rgba(18, 29, 54, 0.85);
-      --surface-strong: rgba(15, 23, 42, 0.95);
-      --text: #f8fbff;
-      --muted: #9aa7c1;
-      --accent: #ff6b35;
-      --accent-strong: #ff9840;
-      --border: rgba(255,255,255,0.08);
-      --shadow: 0 30px 80px rgba(0,0,0,0.35);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saurabh Tiwari | Premium Creative Website</title>
+    <meta name="description" content="A high-level animated portfolio website with photos, videos, motion effects, and interactive sections for Saurabh Tiwari." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="heroCanvas"></canvas>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, system-ui, sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at top left, rgba(255,107,53,0.18), transparent 20%),
-                  radial-gradient(circle at bottom right, rgba(56,130,255,0.15), transparent 22%),
-                  linear-gradient(180deg, #060a1a 0%, #071021 45%, #090f1f 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .layout {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 24px 24px 48px;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 16px 0;
-    }
-
-    .brand {
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-size: 0.95rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      flex-wrap: wrap;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 36px;
-      padding: 64px 0 24px;
-    }
-
-    .hero-copy {
-      max-width: 620px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      font-size: 0.78rem;
-    }
-
-    .eyebrow::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--accent);
-      display: inline-block;
-      opacity: 0.8;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(3rem, 4.5vw, 4.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-    }
-
-    .hero p {
-      margin: 24px 0 0;
-      max-width: 640px;
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 1.05rem;
-    }
-
-    .hero-actions {
-      margin-top: 32px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .button,
-    .button-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 26px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
-    }
-
-    .button {
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #07101f;
-      border: 1px solid transparent;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    .button-secondary {
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-panel {
-      padding: 32px;
-      border-radius: 32px;
-      background: rgba(12, 19, 38, 0.96);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      min-height: 420px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,107,53,0.18), transparent 22%),
-                  radial-gradient(circle at 80% 70%, rgba(59,130,246,0.16), transparent 20%);
-      pointer-events: none;
-    }
-
-    .hero-panel-content {
-      position: relative;
-      display: grid;
-      gap: 22px;
-      width: 100%;
-      max-width: 420px;
-    }
-
-    .stat-card {
-      display: grid;
-      gap: 14px;
-      padding: 26px;
-      border-radius: 28px;
-      background: rgba(6, 10, 23, 0.88);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .stat-card h3 {
-      margin: 0 0 6px;
-      font-size: 1.05rem;
-      color: var(--accent);
-    }
-
-    .stat-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .highlight-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .highlight {
-      padding: 20px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .highlight strong {
-      display: block;
-      font-size: 1.95rem;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .section {
-      margin-top: 72px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: clamp(2rem, 3vw, 2.6rem);
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 660px;
-      line-height: 1.8;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: 28px;
-      background: rgba(9, 17, 35, 0.9);
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 14px;
-      font-size: 1.15rem;
-      color: var(--accent);
-    }
-
-    .card p,
-    .card li {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.96rem;
-    }
-
-    .skill-list,
-    .project-list {
-      display: grid;
-      gap: 16px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .skill-item,
-    .project-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 18px 20px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .skill-badge,
-    .project-badge {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(255,107,53,0.12);
-      color: var(--accent);
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .project-content h4,
-    .skill-content h4 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .project-content p,
-    .skill-content p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .contact-card {
-      display: grid;
-      gap: 20px;
-      padding: 36px;
-      border-radius: 32px;
-      background: rgba(8, 14, 32, 0.9);
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-card a {
-      color: var(--text);
-    }
-
-    .footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .hero {
-        padding-top: 40px;
-      }
-      .hero-panel {
-        min-height: auto;
-      }
-      .button,
-      .button-secondary {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="layout">
     <header class="topbar">
-      <div class="brand">Hemant Pandey</div>
+      <a href="#home" class="brand">Saurabh Tiwari</a>
       <nav class="nav-links">
-        <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#projects">Work</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#videos">Videos</a>
+        <a href="#journey">Journey</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <section id="home" class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Digital Architect</span>
-        <h1>High-end portfolio websites, built modern and performance-first.</h1>
-        <p>I design and develop premium brands, landing pages, and web apps with clean UI, strong interactions, and fast delivery. Perfect for freelancers, startups, and personal brands.</p>
-        <div class="hero-actions">
-          <a class="button" href="#contact">Work with me</a>
-          <a class="button-secondary" href="#projects">See projects</a>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Premium Creative Portfolio</p>
+        <h1>A high-level digital experience with motion, media, and impact.</h1>
+        <p class="hero-text">
+          This website combines cinematic visuals, animated storytelling, immersive media, and polished presentation into one elegant experience for Saurabh Tiwari.
+        </p>
+
+        <div class="info-card">
+          <p><strong>Email:</strong> saurabhtiwari8834@gmail.com</p>
+          <p><strong>Mobile:</strong> +91 7225923213</p>
+          <p><strong>Created by:</strong> Hemant Pandey</p>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn primary" href="#gallery">Explore Gallery</a>
+          <a class="btn secondary" href="#videos">Watch Media</a>
         </div>
       </div>
 
-      <div class="hero-panel">
-        <div class="panel-glow"></div>
-        <div class="hero-panel-content">
-          <div class="stat-card">
-            <h3>Portfolio snapshot</h3>
-            <p>Designed to feel premium, professional, and ready for a modern web presence.</p>
+      <div class="hero-visual reveal">
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="Creative banner" />
+          <div class="hero-float">
+            <h3>Motion First</h3>
+            <p>Bold color, animated rhythm, and immersive design.</p>
           </div>
-          <div class="highlight-grid">
-            <div class="highlight">
-              <strong>100+</strong>
-              <p>Page designs and landing experiences delivered.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stat-box reveal">
+        <strong>120+</strong>
+        <span>Creative Concepts</span>
+      </div>
+      <div class="stat-box reveal">
+        <strong>24/7</strong>
+        <span>Visual Flow</span>
+      </div>
+      <div class="stat-box reveal">
+        <strong>100%</strong>
+        <span>Premium Presentation</span>
+      </div>
+      <div class="stat-box reveal">
+        <strong>4K</strong>
+        <span>High-Impact Media</span>
+      </div>
+    </section>
+
+    <main>
+      <section id="about" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>A modern digital identity built for elegance and energy.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Creative Vision</h3>
+            <p>Every section in this experience is crafted to feel alive through expressive motion, cinematic imagery, and carefully balanced layout.</p>
+          </div>
+          <div class="about-card">
+            <h3>Media Rich</h3>
+            <p>Photos, videos, layered visuals, and animated effects come together to create a premium showcase that feels dynamic from top to bottom.</p>
+          </div>
+          <div class="about-card">
+            <h3>Interactive Feel</h3>
+            <p>Hover responses, scroll reveals, motion accents, and a responsive layout ensure the website feels polished on every screen.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Photo Gallery</p>
+          <h2>Stunning imagery with cinematic atmosphere.</h2>
+        </div>
+        <div class="gallery-grid">
+          <article class="media-card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Golden sunset" />
+            <div class="card-content"><h3>Golden Horizon</h3><p>Dreamy light and rich storytelling.</p></div>
+          </article>
+          <article class="media-card">
+            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=900&q=80" alt="City lights" />
+            <div class="card-content"><h3>Urban Glow</h3><p>Modern energy in a vibrant frame.</p></div>
+          </article>
+          <article class="media-card">
+            <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80" alt="Mountain view" />
+            <div class="card-content"><h3>Nature Rhythm</h3><p>Balanced, organic, and refreshing.</p></div>
+          </article>
+          <article class="media-card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="Landscape" />
+            <div class="card-content"><h3>Skyline Dream</h3><p>Minimal beauty with depth and motion.</p></div>
+          </article>
+          <article class="media-card">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Ocean coast" />
+            <div class="card-content"><h3>Coastal Motion</h3><p>Ocean energy and calm visual balance.</p></div>
+          </article>
+          <article class="media-card">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" alt="Snowy mountain" />
+            <div class="card-content"><h3>Winter Glow</h3><p>Cold tones with a warm, polished mood.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="videos" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Featured Videos</p>
+          <h2>Motion and cinematic storytelling at the core.</h2>
+        </div>
+        <div class="video-grid">
+          <div class="video-card large">
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-stack">
+            <div class="video-card small">
+              <video controls muted loop playsinline poster="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80">
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+              </video>
             </div>
-            <div class="highlight">
-              <strong>24h</strong>
-              <p>Fast prototype-ready website to start presenting your brand immediately.</p>
-            </div>
-            <div class="highlight">
-              <strong>Custom</strong>
-              <p>Tailored visual identity, content flow, and portfolio storytelling.</p>
+            <div class="video-card small">
+              <video controls muted loop playsinline poster="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=80">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="about" class="section">
-      <div class="section-header">
-        <div>
-          <h2>About me</h2>
-          <p>I'm Hemant Pandey — I help brands launch modern websites with polished design, excellent usability, and a premium digital feel.</p>
+      <section id="journey" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Journey</p>
+          <h2>Built around creative progression and polished presentation.</h2>
         </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Experience</h3>
-          <p>4+ years of building websites, landing pages, and full-stack apps with HTML, CSS, JavaScript, React, and Node.</p>
-        </div>
-        <div class="card">
-          <h3>Design</h3>
-          <p>Focused on clean visual systems, strong typography, and layouts that feel high-end without being heavy.</p>
-        </div>
-        <div class="card">
-          <h3>Outcome</h3>
-          <p>Site experiences that look premium, load fast, and turn visitors into clients.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="section-header">
-        <div>
-          <h2>Featured work</h2>
-          <p>Selected website projects and digital experiences created for portfolios, startups, and brands.</p>
-        </div>
-      </div>
-
-      <div class="project-list">
-        <div class="project-item">
-          <span class="project-badge">01</span>
-          <div class="project-content">
-            <h4>Brand Studio Website</h4>
-            <p>Modern portfolio site for a creative studio with immersive hero visuals, case study sections, and contact CTA.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>01. Ideas</h3>
+            <p>Concepts are shaped with strong emotion, structure, and depth.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>02. Design</h3>
+            <p>Visual language becomes bold, elegant, and memorable.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>03. Motion</h3>
+            <p>Animation and interaction create a lively and immersive experience.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>04. Launch</h3>
+            <p>Everything comes together into a premium digital presence.</p>
           </div>
         </div>
-        <div class="project-item">
-          <span class="project-badge">02</span>
-          <div class="project-content">
-            <h4>Professional Portfolio</h4>
-            <p>A premium personal website with strong storytelling, skill highlights, testimonials, and service offers.</p>
+      </section>
+
+      <section class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Highlights</p>
+          <h2>Animated cards and interactive visual layers.</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card pulse-card">
+            <h3>Pulse Motion</h3>
+            <p>Bright animated accents add energy and focus.</p>
+          </div>
+          <div class="feature-card orbit-card">
+            <h3>Orbit Flow</h3>
+            <p>Smooth rotation and motion create futuristic rhythm.</p>
+          </div>
+          <div class="feature-card glow-card">
+            <h3>Glow Burst</h3>
+            <p>Layered lighting produces depth and prestige.</p>
+          </div>
+          <div class="feature-card tilt-card">
+            <h3>Hover Lift</h3>
+            <p>Cards lightly respond to interaction with elegance.</p>
           </div>
         </div>
-        <div class="project-item">
-          <span class="project-badge">03</span>
-          <div class="project-content">
-            <h4>Startup Landing</h4>
-            <p>High-converting landing page template built for SaaS and app launches with fast load and clear messaging.</p>
+      </section>
+
+      <section id="contact" class="section contact-section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s make something unforgettable together.</h2>
+        </div>
+        <div class="contact-card">
+          <div>
+            <p><strong>Name:</strong> Saurabh Tiwari</p>
+            <p><strong>Email:</strong> saurabhtiwari8834@gmail.com</p>
+            <p><strong>Phone:</strong> +91 7225923213</p>
+            <p><strong>Created by:</strong> Hemant Pandey</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn primary" href="mailto:saurabhtiwari8834@gmail.com">Send Email</a>
+            <a class="btn secondary" href="tel:+917225923213">Call Now</a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section id="skills" class="section">
-      <div class="section-header">
-        <div>
-          <h2>Core skills</h2>
-          <p>Technical and design capabilities used to build beautiful websites that work.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Web Development</h3>
-          <ul>
-            <li>HTML5 / CSS3 / JavaScript</li>
-            <li>Responsive & mobile-first layouts</li>
-            <li>React / Next.js / Vite</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Design</h3>
-          <ul>
-            <li>Visual identity & branding</li>
-            <li>UX-focused page structure</li>
-            <li>Clean, premium visual systems</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Launch</h3>
-          <ul>
-            <li>GitHub Pages / Netlify / Vercel</li>
-            <li>Performance optimization</li>
-            <li>SEO-friendly setup</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="section-header">
-        <div>
-          <h2>Get in touch</h2>
-          <p>Ready for a modern website like hemantpandey.in? Send a quick message and let’s build it together.</p>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <p><strong>Email:</strong> <a href="mailto:hemant.pandey2121@gmail.com">hemant.pandey2121@gmail.com</a></p>
-        <p><strong>Phone:</strong> +91 12345 67890</p>
-        <p><strong>Location:</strong> India</p>
-        <p>Tell me your style, content, and launch timeframe. I’ll help you get a polished website live fast.</p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <span>© 2026 Hemant Pandey. All rights reserved.</span>
-      <span>Built for a high-end digital portfolio.</span>
+    <footer>
+      <p>© <span id="year"></span> Saurabh Tiwari • Crafted by Hemant Pandey</p>
     </footer>
-  </div>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
